@@ -4,6 +4,7 @@ package libreria.entidad;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,10 +26,10 @@ public class Prestamo implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaDevolucion;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     private Libro libro;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     private Cliente cliente;
 
     public Prestamo(Integer id, Date fechaPrestamo, Date fechaDevolucion, Libro libro, Cliente cliente) {
